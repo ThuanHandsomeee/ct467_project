@@ -1,5 +1,8 @@
 <?php
-include_once __DIR__ .'/partial/header.php'
+include_once __DIR__ .'/partial/header.php';
+
+require_once __DIR__ ."/../model/product.php";
+$products=getAllProduct();
 ?>
 <!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
