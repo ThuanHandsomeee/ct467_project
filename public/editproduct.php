@@ -3,13 +3,20 @@ include_once __DIR__ .'/partial/header.php';
 
 
 require_once __DIR__ ."/../model/product.php";
+
+$id= $_GET["id"];
+$product=getById($id);
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-    $image = $_FILES["image"];
-
-    $result = createProduct($name, $price, $description, $image);
+    $image = null;
+    if(isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+        $image = $_FILES["image"];
+    }
+    
+    $result = editProduct($id, $name, $price, $description, $image);
     if($result) {
         header("Location: /public/product.php");
     }
@@ -18,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <div class="container-fluid bg-primary hero-header mb-5">
         <div class="container text-center">
-            <h1 class="display-4 text-white mb-3 animated slideInDown">Add Product</h1>
+            <h1 class="display-4 text-white mb-3 animated slideInDown">Edit Product</h1>
         </div>
     </div>
 <div class="container-fluid py-5">
@@ -28,12 +35,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         <form method="POST" action="" enctype="multipart/form-data">
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label for="name">Product</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Product Name">
+                                    <label for="name">Product Name</label>
+                                    <input class="form-control" name="name" value="<?php echo $product['name']
+                                     ?>" placeholder="Product Name">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="price">Product Price</label>
-                                    <input type="number" class="form-control" name="price" placeholder="Product Price">
+                                    <input type="number" class="form-control" name="price" value=<?php echo $product['price']
+                                     ?> placeholder="Product Price">
                                 </div>
                                 <div class="col-12">
                                     <label for="image">Image</label>
@@ -44,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <textarea class="form-control" placeholder="Description" name="description" style="height: 150px"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Add Product</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Update Product</button>
                                 </div>
                             </div>
                         </form>

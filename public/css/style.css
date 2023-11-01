@@ -427,3 +427,26 @@ img.animated.pulse {
     padding-right: 0;
     border-right: none;
 }
+.product_box{
+    position: relative;
+}
+.button_edit{
+    position: absolute;
+        top: 0;
+        right: 12px;
+        background: #90bc79;
+        padding: 0px 20px;
+}
+
+.button_delete {
+    position: absolute;
+    top: 25px;
+    right: 12px;
+    background: #90bc79;
+    padding: 0px 10px;
+}
+
+.img_product{
+    height: 300px;
+    object-fit: contain;
+}
