@@ -2,8 +2,8 @@
 include_once __DIR__ . '/partial/header.php';
 
 require_once __DIR__ . "/../model/product.php";
-
-$products = getAllProduct();
+$page = $_GET['page'] ?? 1;
+$products = getAllProduct($page);
 ?>
 <!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
@@ -17,7 +17,7 @@ $products = getAllProduct();
                     elit. Etiam feugiat rutrum lectus, sed auctor ex malesuada id. Orci varius natoque penatibus et
                     magnis dis parturient montes.</p>
                 <a href="shopnow.php" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">Shop Now</a>
-                <a href="" class="btn btn-outline-dark py-2 px-4 animated slideInRight">Contact Us</a>
+                <a href="contact.php" class="btn btn-outline-dark py-2 px-4 animated slideInRight">Contact Us</a>
             </div>
             <div class="col-lg-6">
                 <img class="img-fluid animated pulse infinite" src="img/shampoo.png" alt="">

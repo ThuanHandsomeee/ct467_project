@@ -2,8 +2,9 @@
 include_once __DIR__ . '/partial/header.php';
 
 require_once __DIR__ . "/../model/product.php";
-require_once __DIR__ . "/../model/oder.php";
-$products = getAllProduct();
+require_once __DIR__ . "/../model/order.php";
+$page = $_GET['page'] ?? 1;
+$products = getAllProduct($page);
 
 $idproduct = $_GET["id"];
 $product = getById($idproduct);

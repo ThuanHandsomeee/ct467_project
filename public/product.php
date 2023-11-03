@@ -2,7 +2,7 @@
 include_once __DIR__ . '/partial/header.php';
 
 require_once __DIR__ . "/../model/product.php";
-$page = $_GET['page'];
+$page = $_GET['page'] ?? 1;
 $products = getAllProduct($page);
 ?>
 <!-- Hero Start -->
