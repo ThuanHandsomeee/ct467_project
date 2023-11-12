@@ -58,7 +58,7 @@ $products = getAllProduct($page);
         </div>
     </div>
     <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-        <ul class="pagination">
+        <ul class="pagination mt-2">
             <li class="page-item"><a class="page-link" href="?page=<?php
             if ($page > 1) {
                 echo $page - 1;

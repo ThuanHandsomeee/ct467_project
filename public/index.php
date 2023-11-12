@@ -77,7 +77,7 @@ $products = getAllProduct($page);
                     tristique odio ut rutrum pellentesque. Fusce eget molestie est, at rutrum est.</p>
                 <p class="mb-4">Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no
                     labore lorem sit. Sanctus clita duo justo et tempor.</p>
-                <a class="btn btn-primary py-2 px-4" href="">Shop Now</a>
+                <a class="btn btn-primary py-2 px-4" href="product.php">Product</a>
             </div>
         </div>
     </div>
@@ -341,11 +341,6 @@ $products = getAllProduct($page);
     </div>
 </div>
 <!-- Testimonial End -->
-
-
-
-
-
 
 <?php
 include_once __DIR__ . '/partial/footer.php'

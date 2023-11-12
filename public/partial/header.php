@@ -63,6 +63,7 @@
                         <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                     <a href="" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Shop Now</a>
+                    <a href="" class="btn btn-white py-2 px-4 d-none d-lg-inline-block">Sign In</a>
                 </div>
             </nav>
         </div>
