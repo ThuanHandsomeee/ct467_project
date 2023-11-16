@@ -4,7 +4,7 @@ use Project\models\ProductModel;
 include_once __DIR__ . '/partial/header.php';
 
 require_once __DIR__ . "/../models/ProductModel.php";
-require_once __DIR__ . "/../models/order.php";
+require_once __DIR__ . "/../models/Order.php";
 $page = $_GET['page'] ?? 1;
 $order = new Order();
 $product = new ProductModel;
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
     $phone = $_POST['phone'];
 
-    $result = $Order->buyProduct($idproduct, $namecus, $address, $phone);
+    $result = $order->buyProduct($idproduct, $namecus, $address, $phone);
     if ($result) {
         header("Location: /public/index.php");
     }

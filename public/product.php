@@ -15,7 +15,7 @@ $products = $product->getAllProduct($page);
             <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
                 <li class="breadcrumb-item"><a class="text-white" href="index.php">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-white" href="contact.php">Contact</a></li>
-                <li class="breadcrumb-item"><a class="text-white" href="createproduct.php">Add Product</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="about.php">About Us</a></li>
             </ol>
         </nav>
     </div>
@@ -32,6 +32,7 @@ $products = $product->getAllProduct($page);
             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada
                 consequat, nibh erat tempus risus.</p>
         </div>
+        <a href="createproduct.php" class="btn btn-primary float-right mb-3">Add Product</a>
         <div class="row g-4">
 
             <?php
