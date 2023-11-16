@@ -7,25 +7,28 @@ use Project\models\ProductModel;
 include __DIR__ . "/../vendor/autoload.php";
 
 $id = $_GET['id'] ?? null;
-$product = new ProductModel();
+$productModel = new ProductModel();
 if ($id) {
-    $product = $product->getById($id);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-    $image = null;
-    if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-        $image = $_FILES["image"];
+    $product = $productModel->getById($id);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        echo $name, $description, $price;
+        $image = null;
+        if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+            $image = $_FILES["image"];
+        }
+        $result = $productModel->editProduct($id, $name, $price, $description, $image);
+        if ($result) {
+            header("Location: /public/product.php");
+        }
     }
 
-    $result = $product->editProduct($id, $name, $price, $description, $image);
-    if ($result) {
-        header("Location: /public/product.php");
-    }
 }
+
+
+
 
 ?>
 <div class="container-fluid bg-primary hero-header mb-5">

@@ -16,7 +16,7 @@ function createAccount($username, $password, $email, $userphone)
 
     return true;
 }
-function getUser($username, $password)
+function getUser($username)
 {
     $db = connectDB();
 

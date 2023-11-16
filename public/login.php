@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $account = getUser($username, $password);
+    $account = getUser($username);
     if (password_verify($password, $account['password'])) {
 
         unset($account['password']);
@@ -23,20 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
         <h1 class="display-4 text-white mb-3">Login</h1>
-        <?php if ($loginFail): ?>
-            <div class="alert alert-danger" role="alert">
+        <?php if ($loginFail)
+            echo '<div class="alert alert-danger" role="alert">
                 Tài khoản không tồn tại, hoặc mật khẩu sai!!!
-            </div>
-        <?php endif; ?>
+            </div>' ?>
+
+
+        </div>
     </div>
-</div>
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class=" row g-5 align-items-center justify-content-center">
-            <form class="col-lg-6 " method="POST" action="">
-                <div class="row g-3 ">
-                    <input type="hidden" name="userid" value="<?php
-                    ?>">
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class=" row g-5 align-items-center justify-content-center">
+                <form class="col-lg-6 " method="POST" action="">
+                    <div class="row g-3 ">
+                        <input type="hidden" name="userid" value="<?php
+        ?>">
                     <div class="col-12">
                         <label for="username">Username</label>
                         <input type="username" class="form-control" name="username" placeholder="Username" required>

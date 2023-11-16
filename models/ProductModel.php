@@ -54,9 +54,9 @@ class ProductModel
     public function editProduct($id, $name, $price, $description, $image)
     {
         $db = connectDB();
-
+        echo "Edit Product";
         try {
-            if ($image) {
+            if ($image !== null) {
                 $target_dir = getcwd() . "\\img\\";
                 $uniqueId = uniqid();
                 $target_file = $target_dir . 'product' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
@@ -66,6 +66,7 @@ class ProductModel
                     $stmt->execute(["id" => $id, "name" => $name, "price" => $price, "description" => $description, "image" => $imageUrl]);
                     return true;
                 }
+                return false;
             } else {
                 $stmt = $db->prepare("UPDATE product SET name = :name, price = :price, description = :description WHERE id = :id");
                 $stmt->execute(["id" => $id, "name" => $name, "price" => $price, "description" => $description]);
