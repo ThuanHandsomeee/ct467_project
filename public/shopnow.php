@@ -1,13 +1,17 @@
 <?php
+use Project\models\ProductModel;
+
 include_once __DIR__ . '/partial/header.php';
 
-require_once __DIR__ . "/../model/product.php";
-require_once __DIR__ . "/../model/order.php";
+require_once __DIR__ . "/../models/ProductModel.php";
+require_once __DIR__ . "/../models/order.php";
 $page = $_GET['page'] ?? 1;
-$products = getAllProduct($page);
+$order = new Order();
+$product = new ProductModel;
+$products = $product->getAllProduct($page);
 
 $idproduct = $_GET["id"];
-$product = getById($idproduct);
+$product = $product->getById($idproduct);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
     $phone = $_POST['phone'];
 
-    $result = buyProduct($idproduct, $namecus, $address, $phone);
+    $result = $Order->buyProduct($idproduct, $namecus, $address, $phone);
     if ($result) {
         header("Location: /public/index.php");
     }
@@ -31,17 +35,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container-fluid py-5">
     <div class="container">
 
-        <div class=" wow fadeIn" data-wow-delay="0.1s">
-            <div class="wow fadeIn row g-5 align-items-center" data-wow-delay="0.3s">
-                <div class="py-5 col-lg-6 wow fadeIn">
+        <div class=" ">
+            <div class=" row g-5 align-items-center">
+                <div class="py-5 col-lg-6 ">
                     <div class="container">
                         <div class="row g-5 align-items-center">
                             <?php
                             echo '
-                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="col-lg-6 ">
                                 <img class="img-fluid animated pulse infinite" src="' . $product['image'] . '">
                                 </div>
-                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                                <div class="col-lg-6 ">
                                 <h1 class="text-primary mb-4">' . $product['name'] . '</h1>
                                 <p>' . $product['description'] . '</p>
                                 
@@ -51,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                 </div>
-                <form class="col-lg-6 wow fadeIn" method="POST" action="" data-wow-delay="0.1s">
+                <form class="col-lg-6 " method="POST" action="">
                     <div class="row g-3">
                         <input type="hidden" name="idproduct" value="<?php
                         echo $idproduct

@@ -1,15 +1,15 @@
 <?php
 include_once __DIR__ . '/partial/header.php';
+use Project\models\ProductModel;
 
-
-require_once __DIR__ . "/../model/product.php";
+include __DIR__ . "/../vendor/autoload.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $image = $_FILES["image"];
-
-    $result = createProduct($name, $price, $description, $image);
+    $product = new ProductModel();
+    $result = $product->createProduct($name, $price, $description, $image);
     if ($result) {
         header("Location: /public/product.php");
     }
@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 <div class="container-fluid py-5">
     <div class="container">
-        <div class="col-lg-8 offset-lg-2 wow fadeIn" data-wow-delay="0.1s">
-            <div class="wow fadeIn" data-wow-delay="0.3s">
+        <div class="col-lg-8 offset-lg-2">
+            <div>
                 <form method="POST" action="" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div class="col-md-6">

@@ -1,14 +1,14 @@
-<?php 
+<?php
+use Project\models\ProductModel;
 
-
-require_once __DIR__ ."/../model/product.php";
-
-$id= $_GET["id"];
-
-$result = deleteProduct($id);
-
-if($result){ 
-    header("Location: /public/product.php");
+include __DIR__ . "/../vendor/autoload.php";
+$id = $_GET['id'] ?? null;
+$product = new ProductModel();
+if ($id) {
+    $result = $product->deleteProduct($id);
+    if ($result) {
+        header("Location: /public/product.php");
+    }
 }
-echo "Delete faile"
-?>
+echo "Delete fail"
+    ?>

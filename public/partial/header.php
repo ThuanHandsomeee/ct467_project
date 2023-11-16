@@ -1,3 +1,12 @@
+<?php
+session_start();
+$user = null;
+if (isset($_SESSION["user"])) {
+
+    $user = $_SESSION["user"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,13 +66,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="index.php" class="nav-item nav-link">Home</a>
                         <a href="about.php" class="nav-item nav-link">About</a>
                         <a href="product.php" class="nav-item nav-link">Products</a>
                         <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Shop Now</a>
-                    <a href="" class="btn btn-white py-2 px-4 d-none d-lg-inline-block">Sign In</a>
+                    <?php
+                    if ($user != NULL) {
+                        echo ' <a href="logout.php" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">' . $user["username"] . '</a>';
+                    } else {
+                        echo '<a href="login.php" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">Sign Now</a>';
+                    }
+                    ?>
+
                 </div>
             </nav>
         </div>

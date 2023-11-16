@@ -61,34 +61,12 @@ include_once __DIR__ . '/partial/header.php'
                     tristique odio ut rutrum pellentesque. Fusce eget molestie est, at rutrum est.</p>
                 <p class="mb-4">Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no
                     labore lorem sit. Sanctus clita duo justo et tempor.</p>
-                <a class="btn btn-primary py-2 px-4" href="">Shop Now</a>
+                <a class="btn btn-primary py-2 px-4" href="product.php">Buy Now</a>
             </div>
         </div>
     </div>
 </div>
 <!-- About End -->
-
-
-<!-- Newsletter Start -->
-<div class="container-fluid newsletter bg-primary py-5 my-5">
-    <div class="container py-5">
-        <div class="mx-auto text-center" style="max-width: 600px;">
-            <h1 class="text-white mb-3"><span class="fw-light text-dark">Let's Subscribe</span> The Newsletter</h1>
-            <p class="text-white mb-4">Subscribe now to get 30% discount on any of our products</p>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-7">
-                <div class="position-relative w-100 mt-3 mb-2">
-                    <input class="form-control w-100 py-4 ps-4 pe-5" type="text" placeholder="Enter Your Email"
-                        style="height: 48px;">
-                    <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                            class="fa fa-paper-plane text-white fs-4"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Newsletter End -->
 <?php
 include_once __DIR__ . '/partial/footer.php'
     ?>

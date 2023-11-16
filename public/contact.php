@@ -26,7 +26,7 @@ include_once __DIR__ . '/partial/header.php'
                     <div class="border py-5 px-3">
                         <i class="fa fa-map-marker-alt fa-3x text-dark mb-4"></i>
                         <h5 class="text-white">Office Address</h5>
-                        <h5 class="fw-light text-white">123 Street, New York, USA</h5>
+                        <h5 class="fw-light text-white">Ninh Kieu, Can Tho</h5>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@ include_once __DIR__ . '/partial/header.php'
                     <div class="border py-5 px-3">
                         <i class="fa fa-phone-alt fa-3x text-dark mb-4"></i>
                         <h5 class="text-white">Call Us</h5>
-                        <h5 class="fw-light text-white">+012 345 67890</h5>
+                        <h5 class="fw-light text-white">0909990090</h5>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@ include_once __DIR__ . '/partial/header.php'
                     <div class="border py-5 px-3">
                         <i class="fa fa-envelope fa-3x text-dark mb-4"></i>
                         <h5 class="text-white">Mail Us</h5>
-                        <h5 class="fw-light text-white">info@example.com</h5>
+                        <h5 class="fw-light text-white">minhquan@example.com</h5>
                     </div>
                 </div>
             </div>
@@ -111,28 +111,6 @@ include_once __DIR__ . '/partial/header.php'
     </div>
 </div>
 <!-- Contact End -->
-
-
-<!-- Newsletter Start -->
-<div class="container-fluid newsletter bg-primary py-5 my-5">
-    <div class="container py-5">
-        <div class="mx-auto text-center" style="max-width: 600px;">
-            <h1 class="text-white mb-3"><span class="fw-light text-dark">Let's Subscribe</span> The Newsletter</h1>
-            <p class="text-white mb-4">Subscribe now to get 30% discount on any of our products</p>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-7">
-                <div class="position-relative w-100 mt-3 mb-2">
-                    <input class="form-control w-100 py-4 ps-4 pe-5" type="text" placeholder="Enter Your Email"
-                        style="height: 48px;">
-                    <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                            class="fa fa-paper-plane text-white fs-4"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Newsletter End -->
 <?php
 include_once __DIR__ . '/partial/footer.php'
     ?>

@@ -1,9 +1,11 @@
 <?php
 include_once __DIR__ . '/partial/header.php';
+use Project\models\ProductModel;
 
-require_once __DIR__ . "/../model/product.php";
+include __DIR__ . "/../vendor/autoload.php";
 $page = $_GET['page'] ?? 1;
-$products = getAllProduct($page);
+$product = new ProductModel();
+$products = $product->getAllProduct($page);
 ?>
 <!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
@@ -25,7 +27,7 @@ $products = getAllProduct($page);
 
 <div class="container-fluid py-5">
     <div class="container">
-        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+        <div class="mx-auto text-center" style="max-width: 600px;">
             <h1 class="text-primary mb-3"><span class="fw-light text-dark">Our Natural</span> Hair Products</h1>
             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada
                 consequat, nibh erat tempus risus.</p>
@@ -34,8 +36,8 @@ $products = getAllProduct($page);
 
             <?php
             foreach ($products as $product) {
-                echo '<div class="product_box col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="product-item text-center border h-100 p-4">
+                echo '<div class="product_box col-md-6 col-lg-3" >
+                        <div class="product-item text-center border h-100 p-4 ">
                             <a href="editproduct.php?id=' . $product['id'] . '" class="button_edit text-light">Edit</a>
                             <a href="deleteproduct.php?id=' . $product['id'] . '" class="button_delete text-light ">Delete</a>
                             <img class="img_product img-fluid mb-4" src="' . $product['image'] . '" alt="">
