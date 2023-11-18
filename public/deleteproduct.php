@@ -2,7 +2,7 @@
 use Project\models\ProductModel;
 
 include __DIR__ . "/../vendor/autoload.php";
-$id = $_GET['id'] ?? null;
+$id = $_GET['product_id'] ?? null;
 $product = new ProductModel();
 if ($id) {
     $result = $product->deleteProduct($id);
