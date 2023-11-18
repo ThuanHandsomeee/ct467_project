@@ -19,7 +19,7 @@ if ($id) {
         if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
             $image = $_FILES["image"];
         }
-        $result = $productModel->editProduct($product_id, $name, $price, $description, $image);
+        $result = $productModel->editProduct($id, $name, $price, $description, $image);
         if ($result) {
             header("Location: /public/product.php");
         }

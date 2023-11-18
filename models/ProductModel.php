@@ -62,7 +62,7 @@ class ProductModel
                 $target_file = $target_dir . 'product' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
                 if (move_uploaded_file($image["tmp_name"], $target_file)) {
                     $imageUrl = "img\\" . 'product' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
-                    $stmt = $db->prepare("UPDATE product SET name = :name, price = :price, description = :description, image = :image WHERE id = :id");
+                    $stmt = $db->prepare("UPDATE product SET name = :name, price = :price, description = :description, image = :image WHERE product_id = :product_id");
                     $stmt->execute(["product_id" => $product_id, "name" => $name, "price" => $price, "description" => $description, "image" => $imageUrl]);
                     return true;
                 }

@@ -62,25 +62,36 @@ $products = $product->getAllProduct($page);
     </div>
     <nav aria-label="Page navigation example" class="d-flex justify-content-center">
         <ul class="pagination mt-2">
-            <li class="page-item"><a class="page-link" href="?page=<?php
-            if ($page > 1) {
-                echo $page - 1;
-            } else {
-                echo $page;
-            }
-            ?>">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
-            <li class="page-item"><a class="page-link" href="?page=<?php
-            if ($page < 3) {
-                echo $page + 1;
-            } else {
-                echo $page;
-            }
-            ?>">Next</a></li>
+            <li class="page-item">
+                <a class="page-link" href="?page=<?php
+                if ($page > 1) {
+                    echo $page - 1;
+                } else {
+                    echo $page;
+                }
+                ?>">Previous</a>
+            </li>
+
+            <?php for ($i = 1; $i <= 3; $i++): ?>
+                <li class="page-item <?php echo ($page == $i) ? 'active' : ''; ?>">
+                    <a class="page-link" href="?page=<?php echo $i; ?>">
+                        <?php echo $i; ?>
+                    </a>
+                </li>
+            <?php endfor; ?>
+
+            <li class="page-item">
+                <a class="page-link" href="?page=<?php
+                if ($page < 3) {
+                    echo $page + 1;
+                } else {
+                    echo $page;
+                }
+                ?>">Next</a>
+            </li>
         </ul>
     </nav>
+
 </div>
 <!-- Product End -->
 
