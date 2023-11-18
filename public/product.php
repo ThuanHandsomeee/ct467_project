@@ -10,9 +10,9 @@ $products = $product->getAllProduct($page);
 <!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3 animated slideInDown">Products</h1>
+        <h1 class="display-4 text-white mb-3">Products</h1>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a class="text-white" href="index.php">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-white" href="contact.php">Contact</a></li>
                 <li class="breadcrumb-item"><a class="text-white" href="about.php">About Us</a></li>
@@ -39,8 +39,8 @@ $products = $product->getAllProduct($page);
             foreach ($products as $product) {
                 echo '<div class="product_box col-md-6 col-lg-3" >
                         <div class="product-item text-center border h-100 p-4 ">
-                            <a href="editproduct.php?id=' . $product['id'] . '" class="button_edit text-light">Edit</a>
-                            <a href="deleteproduct.php?id=' . $product['id'] . '" class="button_delete text-light ">Delete</a>
+                            <a href="editproduct.php?product_id=' . $product['product_id'] . '" class="button_edit text-light">Edit</a>
+                            <a href="deleteproduct.php?product_id=' . $product['product_id'] . '" class="button_delete text-light ">Delete</a>
                             <img class="img_product img-fluid mb-4" src="' . $product['image'] . '" alt="">
                             <div class="mb-2">
                                 <small class="fa fa-star text-primary"></small>
@@ -50,9 +50,9 @@ $products = $product->getAllProduct($page);
                                 <small class="fa fa-star text-primary"></small>
                                 <small>(99)</small>
                             </div>
-                            <a href="oneproduct.php?id=' . $product['id'] . '" class="h6 d-inline-block mb-2">' . $product['name'] . '</a>
+                            <a href="oneproduct.php?product_id=' . $product['product_id'] . '" class="h6 d-inline-block mb-2">' . $product['name'] . '</a>
                             <h5 class="text-primary mb-3">$' . $product['price'] . '</h5>
-                            <a href="shopnow.php?id=' . $product['id'] . '" class="btn btn-outline-primary px-3">Buy Now</a>
+                            <a href="shopnow.php?product_id=' . $product['product_id'] . '" class="btn btn-outline-primary px-3">Buy Now</a>
                         </div>
                     </div>';
             }

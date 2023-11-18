@@ -73,9 +73,9 @@ if (isset($_SESSION["user"])) {
                     </div>
                     <?php
                     if ($user != NULL) {
-                        echo ' <a href="logout.php" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">' . $user["username"] . '</a>';
+                        echo ' <a href="logout.php" class="btn btn-dark py-2 px-4 me-3">' . $user["username"] . '</a>';
                     } else {
-                        echo '<a href="login.php" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">Sign Now</a>';
+                        echo '<a href="login.php" class="btn btn-dark py-2 px-4 me-3">Sign Now</a>';
                     }
                     ?>
 

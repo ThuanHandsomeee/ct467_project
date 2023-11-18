@@ -10,7 +10,7 @@ $order = new Order();
 $product = new ProductModel;
 $products = $product->getAllProduct($page);
 
-$idproduct = $_GET["id"];
+$idproduct = $_GET["product_id"];
 $product = $product->getById($idproduct);
 
 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3 animated slideInDown">Payment</h1>
+        <h1 class="display-4 text-white mb-3">Payment</h1>
     </div>
 </div>
 <div class="container-fluid py-5">
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php
                             echo '
                                 <div class="col-lg-6 ">
-                                <img class="img-fluid animated pulse infinite" src="' . $product['image'] . '">
+                                <img class="img-fluid pulse infinite" src="' . $product['image'] . '">
                                 </div>
                                 <div class="col-lg-6 ">
                                 <h1 class="text-primary mb-4">' . $product['name'] . '</h1>

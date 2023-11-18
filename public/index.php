@@ -13,14 +13,14 @@ $products = $product->getAllProduct($page);
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 text-center text-lg-start">
-                <h3 class="fw-light text-white slideInRight">Natural & Organic</h3>
-                <h1 class="display-4 text-white slideInRight">Hair <span class="fw-light text-dark">Shampoo</span> For
+                <h3 class="fw-light text-white">Natural & Organic</h3>
+                <h1 class="display-4 text-white">Hair <span class="fw-light text-dark">Shampoo</span> For
                     Healthy Hair</h1>
-                <p class="text-white mb-4 slideInRight">Lorem ipsum dolor sit amet, consectetur adipiscing
+                <p class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing
                     elit. Etiam feugiat rutrum lectus, sed auctor ex malesuada id. Orci varius natoque penatibus et
                     magnis dis parturient montes.</p>
-                <a href="product.php" class="btn btn-dark py-2 px-4 me-3 slideInRight">Buy Now</a>
-                <a href="contact.php" class="btn btn-outline-dark py-2 px-4 slideInRight">Contact Us</a>
+                <a href="product.php" class="btn btn-dark py-2 px-4 me-3">Buy Now</a>
+                <a href="contact.php" class="btn btn-outline-dark py-2 px-4">Contact Us</a>
             </div>
             <div class="col-lg-6">
                 <img class="img-fluid pulse infinite" src="img/shampoo.png" alt="">
@@ -272,8 +272,8 @@ $products = $product->getAllProduct($page);
             foreach ($products as $product) {
                 echo '<div class="product_box col-md-6 col-lg-3">
                         <div class="product-item text-center border h-100 p-4">
-                            <a href="editproduct.php?id=' . $product['id'] . '" class="button_edit text-light">Edit</a>
-                            <a href="deleteproduct.php?id=' . $product['id'] . '" class="button_delete text-light ">Delete</a>
+                            <a href="editproduct.php?id=' . $product['product_id'] . '" class="button_edit text-light">Edit</a>
+                            <a href="deleteproduct.php?id=' . $product['product_id'] . '" class="button_delete text-light ">Delete</a>
                             <img class="img_product img-fluid mb-4" src="' . $product['image'] . '" alt="">
                             <div class="mb-2">
                                 <small class="fa fa-star text-primary"></small>
@@ -283,7 +283,7 @@ $products = $product->getAllProduct($page);
                                 <small class="fa fa-star text-primary"></small>
                                 <small>(99)</small>
                             </div>
-                            <a href="oneproduct.php?id=' . $product['id'] . '" class="h6 d-inline-block mb-2">' . $product['name'] . '</a>
+                            <a href="oneproduct.php?id=' . $product['product_id'] . '" class="h6 d-inline-block mb-2">' . $product['name'] . '</a>
                             <h5 class="text-primary mb-3">$' . $product['price'] . '</h5>
                             <a href="shopnow.php" class="btn btn-outline-primary px-3">Buy Now</a>
                         </div>

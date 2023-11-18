@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3 animated slideInDown">Add Product</h1>
+        <h1 class="display-4 text-white mb-3">Add Product</h1>
     </div>
 </div>
 <div class="container-fluid py-5">

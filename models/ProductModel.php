@@ -13,7 +13,7 @@ class ProductModel
         echo $PAGESIZE;
         echo $skip;
         $db = connectDB();
-        $stmt = $db->prepare("SELECT * FROM product ORDER BY id LIMIT :limit OFFSET :skip");
+        $stmt = $db->prepare("SELECT * FROM product ORDER BY product_id LIMIT :limit OFFSET :skip");
 
         $stmt->bindParam('limit', $PAGESIZE, \PDO::PARAM_INT);
         $stmt->bindParam('skip', $skip, \PDO::PARAM_INT);
@@ -21,12 +21,12 @@ class ProductModel
         $products = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $products;
     }
-    public function getById($id)
+    public function getById($product_id)
     {
 
         $db = connectDB();
-        $stmt = $db->prepare("SELECT * FROM product WHERE id = :id");
-        $stmt->execute(["id" => $id]);
+        $stmt = $db->prepare("SELECT * FROM product WHERE product_id = :product_id");
+        $stmt->execute(["product_id" => $product_id]);
         $product = $stmt->fetch(\PDO::FETCH_ASSOC);
         if ($product) {
             return $product;
@@ -51,7 +51,7 @@ class ProductModel
         }
     }
 
-    public function editProduct($id, $name, $price, $description, $image)
+    public function editProduct($product_id, $name, $price, $description, $image)
     {
         $db = connectDB();
         echo "Edit Product";
@@ -63,31 +63,31 @@ class ProductModel
                 if (move_uploaded_file($image["tmp_name"], $target_file)) {
                     $imageUrl = "img\\" . 'product' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
                     $stmt = $db->prepare("UPDATE product SET name = :name, price = :price, description = :description, image = :image WHERE id = :id");
-                    $stmt->execute(["id" => $id, "name" => $name, "price" => $price, "description" => $description, "image" => $imageUrl]);
+                    $stmt->execute(["product_id" => $product_id, "name" => $name, "price" => $price, "description" => $description, "image" => $imageUrl]);
                     return true;
                 }
                 return false;
             } else {
-                $stmt = $db->prepare("UPDATE product SET name = :name, price = :price, description = :description WHERE id = :id");
-                $stmt->execute(["id" => $id, "name" => $name, "price" => $price, "description" => $description]);
+                $stmt = $db->prepare("UPDATE product SET name = :name, price = :price, description = :description WHERE product_id = :product_id");
+                $stmt->execute(["product_id" => $product_id, "name" => $name, "price" => $price, "description" => $description]);
                 return true;
             }
         } catch (\PDOException $e) {
             return false;
         }
     }
-    public function deleteProduct($id)
+    public function deleteProduct($product_id)
     {
         $db = connectDB();
-        $product = $this->getById($id);
+        $product = $this->getById($product_id);
         if ($product) {
             $imageUrl = getcwd() . "//" . $product['image'];
             if (!file_exists($imageUrl)) {
                 return false;
             }
             unlink($imageUrl);
-            $stmt = $db->prepare("DELETE FROM product WHERE id =:id");
-            $stmt->execute(['id' => $id]);
+            $stmt = $db->prepare("DELETE FROM product WHERE product_id =:product_id");
+            $stmt->execute(['product_id' => $product_id]);
             return true;
         }
         return false;

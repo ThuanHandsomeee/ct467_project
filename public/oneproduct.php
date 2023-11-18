@@ -3,7 +3,7 @@ include_once __DIR__ . '/partial/header.php';
 use Project\models\ProductModel;
 
 include __DIR__ . "/../vendor/autoload.php";
-$id = $_GET['id'] ?? null;
+$id = $_GET['product_id'] ?? null;
 $product = new ProductModel();
 if ($id) {
     $product = $product->getById($id);
@@ -17,12 +17,12 @@ if ($id) {
             <?php
             echo '
                 <div class="col-lg-6">
-                    <img class="img-fluid animated pulse infinite" src="' . $product['image'] . '">
+                    <img class="img-fluid pulse infinite" src="' . $product['image'] . '">
                 </div>
                 <div class="col-lg-6">
                     <h1 class="text-primary mb-4">' . $product['name'] . '</h1>
                     <p>' . $product['description'] . '</p>
-                    <a class="btn btn-primary py-2 px-4" href="shopnow.php?id=' . $product['id'] . '">Buy Now</a>
+                    <a class="btn btn-primary py-2 px-4" href="shopnow.php?product_id=' . $product['product_id'] . '">Buy Now</a>
                     <span class="text-primary fs-4 fw-bold px-1">$' . $product['price'] . '</span>
                 </div>
                 '
