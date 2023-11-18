@@ -22,7 +22,7 @@ if ($id) {
                 <div class="col-lg-6">
                     <h1 class="text-primary mb-4">' . $product['name'] . '</h1>
                     <p>' . $product['description'] . '</p>
-                    <a class="btn btn-primary py-2 px-4" href="">Add to cart</a>
+                    <a class="btn btn-primary py-2 px-4" href="shopnow.php?id=' . $product['id'] . '">Buy Now</a>
                     <span class="text-primary fs-4 fw-bold px-1">$' . $product['price'] . '</span>
                 </div>
                 '
