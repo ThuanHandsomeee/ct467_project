@@ -1,13 +1,15 @@
 <?php
 include_once __DIR__ . '/partial/header.php';
+include __DIR__ . "/../vendor/autoload.php";
 
-require_once __DIR__ . "/../models/account.php";
+use Project\models\AccountModel;
+
 $loginFail = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
-    $account = getUser($username);
+    $accountModel = new AccountModel();
+    $account = $accountModel->getUser($username);
     if (password_verify($password, $account['password'])) {
 
         unset($account['password']);

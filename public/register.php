@@ -1,15 +1,19 @@
 <?php
 include_once __DIR__ . '/partial/header.php';
+include __DIR__ . "/../vendor/autoload.php";
 
-require_once __DIR__ . "/../models/account.php";
+use Project\models\AccountModel;
+
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $userphone = $_POST['userphone'];
     $email = $_POST["email"];
-
-    $result = createAccount($username, $password, $email, $userphone);
+    $accountModel = new AccountModel();
+    $result = $accountModel->createAccount($username, $password, $email, $userphone);
     if ($result) {
         header("Location: /public/login.php");
     }
