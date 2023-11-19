@@ -61,16 +61,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         echo $idproduct
                             ?>">
                         <div class="col-md-6">
-                            <label>Your Name</label>
+                            <label for="name">Your Name</label>
                             <input type="text" class="form-control" name="namecus" placeholder="Your Name" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Phone Number</label>
+                            <label for="phone number">Phone Number</label>
                             <input type="phone number" class="form-control" name="phone" placeholder="Phone Number"
                                 required>
                         </div>
                         <div class="col-12">
-                            <label>Address</label>
+                            <label for="address">Address</label>
                             <input type="Address" class="form-control" name="address" placeholder="Address" required>
                         </div>
                         <div>
