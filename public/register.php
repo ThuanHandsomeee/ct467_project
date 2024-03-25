@@ -5,7 +5,7 @@ include __DIR__ . "/../vendor/autoload.php";
 use Project\models\AccountModel;
 
 
-
+$registerFail = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -15,14 +15,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $accountModel = new AccountModel();
     $result = $accountModel->createAccount($username, $password, $email, $userphone);
     if ($result) {
-        header("Location: /public/login.php");
+        header("Location: /login.php");
+    }
+    else {
+        $registerFail = true;
     }
 }
 ?>
-<!-- Hero Start -->
+
+
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
         <h1 class="display-4 text-white mb-3">Register</h1>
+        <?php if ($registerFail)
+            echo '<div class="alert alert-danger" role="alert">
+                Đăng ký thất bại!!!
+            </div>' ?>
     </div>
 </div>
 <div class="container-fluid py-5">
@@ -78,20 +86,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </script> -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    form = document.querySelector('#form-register');
-    form.addEventListener('submit', function (e) {
-        password = form.querySelector('input[name="password"]').value;
-        passwordConfirm = form.querySelector('input[name="confirm-password"]').value;
-        if (password !== passwordConfirm) {
-            e.preventDefault();
-            // Thay thế alert bằng SweetAlert
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Mật khẩu không trùng khớp!',
-            });
-        }
-    })
+form = document.querySelector('#form-register');
+form.addEventListener('submit', function(e) {
+    password = form.querySelector('input[name="password"]').value;
+    passwordConfirm = form.querySelector('input[name="confirm-password"]').value;
+    if (password !== passwordConfirm) {
+        e.preventDefault();
+        // Thay thế alert bằng SweetAlert
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Mật khẩu không trùng khớp!',
+        });
+    }
+})
 </script>
 <?php
 include_once __DIR__ . '/partial/footer.php'

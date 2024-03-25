@@ -1,24 +1,33 @@
 <?php
 include_once __DIR__ . '/partial/header.php';
-use Project\models\ProductModel;
-
+use Project\models\BookModel;
+$createFaled = false;
 include __DIR__ . "/../vendor/autoload.php";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $user != null) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $image = $_FILES["image"];
-    $product = new ProductModel();
-    $result = $product->createProduct($name, $price, $description, $image);
+    
+    $book = new BookModel();
+    $result = $book->createBook($name, $price, $description, $image, $user["id"]);
     if ($result) {
-        header("Location: /public/product.php");
+        header("Location: /");
     }
+    else {
+        $createFaled = true;
+    }
+
 }
 
 ?>
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3">Add Product</h1>
+        <h1 class="display-4 text-white mb-3">Add Book</h1>
+        <?php if ($createFaled)
+            echo '<div class="alert alert-danger" role="alert">
+                Đã có lỗi xảy ra!!!
+            </div>' ?>
     </div>
 </div>
 <div class="container-fluid py-5">
@@ -28,12 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form method="POST" action="" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="name">Product</label>
-                            <input type="text" class="form-control" name="name" placeholder="Product Name">
+                            <label for="name">Book</label>
+                            <input type="text" class="form-control" name="name" placeholder="Book Name">
                         </div>
                         <div class="col-md-6">
-                            <label for="price">Product Price</label>
-                            <input type="number" class="form-control" name="price" placeholder="Product Price">
+                            <label for="price">Book Price</label>
+                            <input type="number" class="form-control" name="price" placeholder="Book Price">
                         </div>
                         <div class="col-12">
                             <label for="image">Image</label>
@@ -45,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 style="height: 150px"></textarea>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Add Product</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit">Add Book</button>
                         </div>
                     </div>
                 </form>

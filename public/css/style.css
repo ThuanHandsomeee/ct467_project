@@ -3,12 +3,12 @@
 #spinner {
     opacity: 0;
     visibility: hidden;
-    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
     z-index: 99999;
 }
 
 #spinner.show {
-    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    transition: opacity 0.5s ease-out, visibility 0s linear 0s;
     visibility: visible;
     opacity: 1;
 }
@@ -21,12 +21,10 @@
     z-index: 99;
 }
 
-
-
 /*** Button ***/
 .btn {
     font-weight: 500;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .btn.btn-primary {
@@ -59,11 +57,10 @@
     border-radius: 50px;
 }
 
-
 /*** Navbar ***/
 .sticky-top {
     top: -150px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .navbar {
@@ -76,7 +73,7 @@
     padding: 0;
     color: var(--bs-dark);
     font-weight: 500;
-    transition: .5s;
+    transition: 0.5s;
     outline: none;
 }
 
@@ -114,17 +111,16 @@
         top: 150%;
         opacity: 0;
         visibility: hidden;
-        transition: .5s;
+        transition: 0.5s;
     }
 
     .navbar .nav-item:hover .dropdown-menu {
         top: 100%;
         visibility: visible;
-        transition: .5s;
+        transition: 0.5s;
         opacity: 1;
     }
 }
-
 
 /*** Hero Header ***/
 .hero-header {
@@ -143,7 +139,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
@@ -152,10 +148,9 @@
     z-index: 1;
 }
 
-.hero-header .breadcrumb-item+.breadcrumb-item::before {
+.hero-header .breadcrumb-item + .breadcrumb-item::before {
     color: var(--bs-light);
 }
-
 
 /*** Feature ***/
 .feature-item::before {
@@ -165,16 +160,15 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
 .feature-item .border {
     position: relative;
-    border-color: rgba(255, 255, 255, .2) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
     z-index: 1;
 }
-
 
 /*** Deal ***/
 .deal {
@@ -190,7 +184,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
@@ -207,7 +201,6 @@
     text-transform: capitalize;
 }
 
-
 /*** How To Use ***/
 .how-to-use {
     position: relative;
@@ -222,7 +215,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
@@ -232,26 +225,24 @@
 }
 
 .how-to-use .border {
-    border-color: rgba(255, 255, 255, .2) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-
 /*** Product ***/
-.product-item {
-    transition: .1s;
+.book-item {
+    transition: 0.1s;
     border-radius: 10px;
 }
 
-.product-item:hover {
+.book-item:hover {
     border-width: 0 !important;
-    box-shadow: 0 0 35px rgba(144, 188, 121, .25);
+    box-shadow: 0 0 35px rgba(144, 188, 121, 0.25);
 }
 
-.product-item:hover a.btn {
+.book-item:hover a.btn {
     color: var(--bs-white);
     background: var(--bs-primary);
 }
-
 
 /*** Testimonial ***/
 .testimonial {
@@ -267,7 +258,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
@@ -279,7 +270,7 @@
 .testimonial-carousel .owl-item img {
     width: 120px;
     height: 120px;
-    border-color: rgba(255, 255, 255, .2) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
     margin: 0 auto 20px auto;
     border-radius: 100px;
 }
@@ -301,31 +292,29 @@
     align-items: center;
     justify-content: center;
     background: transparent;
-    border: 3px solid rgba(255, 255, 255, .2);
+    border: 3px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .testimonial-carousel .owl-dot.active {
     background: var(--bs-dark);
 }
 
-
 /*** Blog ***/
 .blog-item {
-    transition: .1s;
+    transition: 0.1s;
 }
 
 .blog-item:hover {
     border-width: 0 !important;
-    box-shadow: 0 0 35px rgba(144, 188, 121, .25);
+    box-shadow: 0 0 35px rgba(144, 188, 121, 0.25);
 }
 
 .blog-item:hover a.btn {
     color: var(--bs-white);
     background: var(--bs-primary);
 }
-
 
 /*** Contact ***/
 .contact-info-item::before {
@@ -335,16 +324,15 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
 .contact-info-item .border {
     position: relative;
-    border-color: rgba(255, 255, 255, .2) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
     z-index: 1;
 }
-
 
 /*** Newsletter ***/
 .newsletter {
@@ -360,7 +348,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, 0.1);
     clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%);
 }
 
@@ -370,9 +358,8 @@ edit .newsletter .container {
 }
 
 .newsletter .form-control {
-    background: rgba(255, 255, 255, .3);
+    background: rgba(255, 255, 255, 0.3);
 }
-
 
 /*** Footer ***/
 .footer .btn.btn-link {
@@ -382,7 +369,7 @@ edit .newsletter .container {
     text-align: left;
     color: var(--bs-body);
     font-weight: normal;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .footer .btn.btn-link:hover {
@@ -427,7 +414,7 @@ edit .newsletter .container {
     border-right: none;
 }
 
-.product_box {
+.book_box {
     position: relative;
 }
 
@@ -447,18 +434,18 @@ edit .newsletter .container {
     padding: 0px 10px;
 }
 
-.img_product {
+.img_book {
     height: 300px;
     object-fit: contain;
 }
 
-.product-item .button_edit,
-.product-item .button_delete {
+.book-item .button_edit,
+.book-item .button_delete {
     display: none;
 }
 
-.product-item:hover .button_edit,
-.product-item:hover .button_delete {
+.book-item:hover .button_edit,
+.book-item:hover .button_delete {
     display: inline-block;
 }
 
@@ -497,4 +484,15 @@ edit .newsletter .container {
 
 .back-to-top:hover {
     background-color: #90bc79;
+}
+
+.box-img {
+    display: inline-block;
+    max-width: 400px;
+    max-height: 600px;
+}
+
+.box-img img {
+    width: 100%;
+    height: 100%;
 }

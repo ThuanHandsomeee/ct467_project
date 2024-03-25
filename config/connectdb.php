@@ -2,12 +2,13 @@
 function connectDB() 
     {   
         $servername = "localhost";
-        $username = "root";
+        $username = "tuanhuy";
         $password = "";
-        $dbname = "ct275_project";
+        $dbname = "ct467project";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            echo "Connection ok: " ;
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
            return $conn;

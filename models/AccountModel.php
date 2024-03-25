@@ -8,19 +8,29 @@ class AccountModel
 {
     function createAccount($username, $password, $email, $userphone)
     {
-        $db = connectDB();
-
-        $stmt = $db->prepare("INSERT INTO user (username, password, email, userphone) VALUES (:username, :password, :email,
-:userphone)");
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt->execute([
-            "username" => $username,
-            "password" => $hashed_password,
-            "email" => $email,
-            "userphone" => $userphone
-        ]);
-
-        return true;
+        try {
+            $db = connectDB();
+            $stmt = $db->prepare("SELECT * FROM user WHERE username = :username");
+            $stmt->execute(["username" => $username]);
+            $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+        
+            if ($user) {
+               return false;
+            } else {
+                $stmt = $db->prepare("INSERT INTO user (username, password, email, userphone) VALUES (:username, :password, :email, :userphone)");
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                $stmt->execute([
+                    "username" => $username,
+                    "password" => $hashed_password,
+                    "email" => $email,
+                    "userphone" => $userphone
+                ]);
+        
+                return true;
+            }
+        } catch (\PDOException $e) {
+            return false;
+        }
     }
     function getUser($username)
     {

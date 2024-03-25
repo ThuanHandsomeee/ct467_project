@@ -1,28 +1,28 @@
 <?php
-use Project\models\ProductModel;
+use Project\models\BookModel;
 
 include_once __DIR__ . '/partial/header.php';
 
-require_once __DIR__ . "/../models/ProductModel.php";
+require_once __DIR__ . "/../models/BookModel.php";
 require_once __DIR__ . "/../models/Order.php";
 $page = $_GET['page'] ?? 1;
 $order = new Order();
-$product = new ProductModel;
-$products = $product->getAllProduct($page);
+$product = new BookModel;
+$products = $product->getAllBook($page);
 
-$idproduct = $_GET["product_id"];
+$idproduct = $_GET["id"];
 $product = $product->getById($idproduct);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $idproduct = $_POST["idproduct"];
+    $idproduct = $_POST["id"];
     $namecus = $_POST['namecus'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
 
-    $result = $order->buyProduct($idproduct, $namecus, $address, $phone);
+    $result = $order->buyBook($idproduct, $namecus, $address, $phone);
     if ($result) {
-        header("Location: /public/index.php");
+        header("Location: /index.php");
     }
 }
 
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <h4 id="total"></h4>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Buy Now</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit">Borrow Now</button>
                         </div>
                     </div>
                 </form>
@@ -94,13 +94,13 @@ include_once __DIR__ . '/partial/footer.php'
     ?>
 
 <script>
-    const price = document.querySelector('#price').innerText;
-    const inputquantity = document.querySelector('#inputquantity');
-    const total = document.querySelector('#total');
-    const priceValue = price.replace("$", "");
-    total.innerHTML = `Total price: $${inputquantity.value * priceValue}`;
+const price = document.querySelector('#price').innerText;
+const inputquantity = document.querySelector('#inputquantity');
+const total = document.querySelector('#total');
+const priceValue = price.replace("$", "");
+total.innerHTML = `Total price: $${inputquantity.value * priceValue}`;
 
-    inputquantity.addEventListener('change', function (e) {
-        total.innerHTML = `Total price: $${inputquantity.value * priceValue}`;
-    })
+inputquantity.addEventListener('change', function(e) {
+    total.innerHTML = `Total price: $${inputquantity.value * priceValue}`;
+})
 </script>

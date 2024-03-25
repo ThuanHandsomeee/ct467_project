@@ -2,14 +2,15 @@
 include_once __DIR__ . '/partial/header.php';
 
 
-use Project\models\ProductModel;
+use Project\models\BookModel;
 
 include __DIR__ . "/../vendor/autoload.php";
 
-$id = $_GET['product_id'] ?? null;
-$productModel = new ProductModel();
+$id = $_GET['id'] ?? null;
+$bookModel = new BookModel();
+$editFailed = false;
 if ($id) {
-    $product = $productModel->getById($id);
+    $book = $bookModel->getById($id);
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = $_POST['name'];
         $description = $_POST['description'];
@@ -19,9 +20,12 @@ if ($id) {
         if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
             $image = $_FILES["image"];
         }
-        $result = $productModel->editProduct($id, $name, $price, $description, $image);
+        $result = $bookModel->editBook($id, $name, $price, $description, $image);
         if ($result) {
-            header("Location: /public/product.php");
+            header("Location:/book.php");
+        }
+        else {
+            $editFailed = true;
         }
     }
 
@@ -33,7 +37,11 @@ if ($id) {
 ?>
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3">Edit Product</h1>
+        <h1 class="display-4 text-white mb-3">Edit Book</h1>
+        <?php if ($editFailed)
+            echo '<div class="alert alert-danger" role="alert">
+                Đã có lỗi xảy ra!!!
+            </div>' ?>
     </div>
 </div>
 <div class="container-fluid py-5">
@@ -43,14 +51,14 @@ if ($id) {
                 <form method="POST" action="" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="name">Product Name</label>
-                            <input class="form-control" name="name" value="<?php echo $product['name']
-                                ?>" placeholder="Product Name">
+                            <label for="name">Book Name</label>
+                            <input class="form-control" name="name" value="<?php echo $book['name']
+                                ?>" placeholder="Book Name">
                         </div>
                         <div class="col-md-6">
-                            <label for="price">Product Price</label>
-                            <input type="number" class="form-control" name="price" value=<?php echo $product['price']
-                                ?> placeholder="Product Price">
+                            <label for="price">Book Price</label>
+                            <input type="number" class="form-control" name="price" value=<?php echo $book['price']
+                                ?> placeholder="Book Price">
                         </div>
                         <div class="col-12">
                             <label for="image">Image</label>
@@ -62,7 +70,7 @@ if ($id) {
                                 style="height: 150px"></textarea>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Update Product</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit">Update Book</button>
                         </div>
                     </div>
                 </form>

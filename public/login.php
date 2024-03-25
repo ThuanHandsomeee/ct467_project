@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         unset($account['password']);
         $_SESSION['user'] = $account;
 
-        header("Location: /public/");
+        header("Location: /");
 
     }
     $loginFail = true;
@@ -29,17 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<div class="alert alert-danger" role="alert">
                 Tài khoản không tồn tại, hoặc mật khẩu sai!!!
             </div>' ?>
-
-
-        </div>
     </div>
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class=" row g-5 align-items-center justify-content-center">
-                <form class="col-lg-6 " method="POST" action="">
-                    <div class="row g-3 ">
-                        <input type="hidden" name="userid" value="<?php
-        ?>">
+</div>
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class=" row g-5 align-items-center justify-content-center">
+            <form class="col-lg-6 " method="POST" action="">
+                <div class="row g-3 ">
+
                     <div class="col-12">
                         <label for="username">Username</label>
                         <input type="username" class="form-control" name="username" placeholder="Username" required>
@@ -64,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </div>
 </div>
+
 <?php
 include_once __DIR__ . '/partial/footer.php'
     ?>
