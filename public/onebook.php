@@ -4,9 +4,10 @@ use Project\models\BookModel;
 
 include __DIR__ . "/../vendor/autoload.php";
 $id = $_GET['id'] ?? null;
-$book = new BookModel();
+$bookModel = new BookModel();
+
 if ($id) {
-    $book = $book->getById($id);
+    $book = $bookModel->getById($id);
 }
 ?>
 <div class="container-fluid bg-primary hero-header mb-5">

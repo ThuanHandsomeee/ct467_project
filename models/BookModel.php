@@ -36,20 +36,22 @@ class BookModel
     }
 
     public function createBook($name, $price, $description, $image, $userId)
-    {try {
-        $target_dir = getcwd() . "\\img\\";
-        $uniqueId = uniqid();
-        $target_file = $target_dir . 'book' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
-        if (move_uploaded_file($image["tmp_name"], $target_file)) {
-            $db = connectDB();
-            $imageUrl = "img\\" . 'book' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
-            $stmt = $db->prepare("INSERT INTO book (name, price, description, image, user_id) VALUES (:name,:price,:description,:image,:userId)");
-            $stmt->execute(["name" => $name, "price" => $price, "description" => $description, "image" => $imageUrl, "userId" => $userId]);
-            return true;
-        } else {
-            return false;
-        }}
-        catch (\PDOException $e) {
+    {
+        try {
+            $target_dir = getcwd() . "\\img\\";
+            $uniqueId = uniqid();
+            $target_file = $target_dir . 'book' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
+            if (move_uploaded_file($image["tmp_name"], $target_file)) {
+                $db = connectDB();
+                $imageUrl = "img\\" . 'book' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
+                $stmt = $db->prepare("INSERT INTO book (name, price, description, image, user_id) VALUES (:name,:price,:description,:image,:userId)");
+                $stmt->execute(["name" => $name, "price" => $price, "description" => $description, "image" => $imageUrl, "userId" => $userId]);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
             return false;
         }
     }
@@ -94,11 +96,10 @@ class BookModel
                 $stmt->execute(['id' => $id]);
                 return true;
             }
-            print("Error: Không tìm thấy ảnh" );
+            print ("Error: Không tìm thấy ảnh");
             return false;
-        }
-        catch (\PDOException $e) {
-            print("Error: " . $e->getMessage());
+        } catch (\PDOException $e) {
+            print ("Error: " . $e->getMessage());
             return false;
         }
     }

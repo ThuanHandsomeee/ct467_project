@@ -19,7 +19,7 @@ $books = $book->getAllBook($page);
 <div class="container-fluid py-5">
     <div class="container">
         <?php
-        if($user ) { 
+        if ($user && $user["role"] == "ADMIN") {
             echo '<a href="createbook.php" class="btn btn-primary float-right mb-3">Add Book</a>';
         }
         ?>
@@ -30,11 +30,11 @@ $books = $book->getAllBook($page);
                 echo '<div class="book_box col-md-6 col-lg-3" >
                         <div class="book-item text-center border h-100 p-4 ">
                             ';
-                        if( $user && $user["id"] == $book["user_id"]) {
-                            echo'<a href="editbook.php?id=' . $book['id'] . '" class="button_edit text-light">Edit</a>
+                if ($user && $user["role"] == "ADMIN") {
+                    echo '<a href="editbook.php?id=' . $book['id'] . '" class="button_edit text-light">Edit</a>
                                 <a href="deletebook.php?id=' . $book['id'] . '" class="button_delete text-light ">Delete</a>';
-                            }
-                        echo'
+                }
+                echo '
                             <img class="img_book img-fluid mb-4" src="' . $book['image'] . '" alt="">
                             <div class="mb-2">
                                 <small class="fa fa-star text-primary"></small>
@@ -67,11 +67,11 @@ $books = $book->getAllBook($page);
             </li>
 
             <?php for ($i = 1; $i <= 3; $i++): ?>
-            <li class="page-item <?php echo ($page == $i) ? 'active' : ''; ?>">
-                <a class="page-link" href="?page=<?php echo $i; ?>">
-                    <?php echo $i; ?>
-                </a>
-            </li>
+                <li class="page-item <?php echo ($page == $i) ? 'active' : ''; ?>">
+                    <a class="page-link" href="?page=<?php echo $i; ?>">
+                        <?php echo $i; ?>
+                    </a>
+                </li>
             <?php endfor; ?>
 
             <li class="page-item">
