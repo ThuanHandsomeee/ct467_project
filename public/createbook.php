@@ -44,8 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $user != null) {
                             <label for="price">Book Price</label>
                             <input type="number" class="form-control" name="price" placeholder="Book Price">
                         </div>
-                        <div class="col-12">
-                            <label for="image">Image</label>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" name="quantity" placeholder="Quantity">
+                        </div>
+                        <div class="col-md-6">
+
                             <input type="file" class="form-control" name="image" placeholder="Image">
                         </div>
                         <div class="col-12">

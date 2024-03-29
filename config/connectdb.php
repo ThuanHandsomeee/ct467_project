@@ -2,9 +2,9 @@
 function connectDB()
 {
     $servername = "localhost";
-    $username = "root";
+    $username = "tuanhuy";
     $password = "";
-    $dbname = "ct467_project";
+    $dbname = "ct467project";
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

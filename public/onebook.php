@@ -26,7 +26,8 @@ if ($id) {
                 </div>
                 <div class="col-lg-6">
                     <h1 class="text-primary mb-4">' . $book['name'] . '</h1>
-                    <p class="mb-4">' . $book['description'] . '</p>
+                    <p class="mb-4">Quantity ' . $book['quantity'] .   '</p>
+                    <p class="mb-4">' . $book['description'] .   '</p>
                     <a class="btn btn-primary py-2 px-4" href="shopnow.php?id=' . $book['id'] . '">Buy Now</a>
                     <span class="text-primary fs-4 fw-bold px-1">$' . $book['price'] . '</span>
                 </div>

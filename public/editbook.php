@@ -46,17 +46,17 @@ if ($id) {
             echo '<div class="alert alert-danger" role="alert">
                 Đã có lỗi xảy ra!!!
             </div>' ?>
-        </div>
     </div>
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="col-lg-8 offset-lg-2">
-                <div>
-                    <form method="POST" action="" enctype="multipart/form-data">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="name">Book Name</label>
-                                <input class="form-control" name="name" value="<?php echo $book['name']
+</div>
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="col-lg-8 offset-lg-2">
+            <div>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="name">Book Name</label>
+                            <input class="form-control" name="name" value="<?php echo $book['name']
             ?>" placeholder="Book Name">
                         </div>
                         <div class="col-md-6">
@@ -64,10 +64,14 @@ if ($id) {
                             <input type="number" class="form-control" name="price" value="<?php echo $book['price']
                                 ?>" placeholder="Book Price">
                         </div>
-                        <div class="col-12">
-                            <label for="image">Image</label>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" name="quantity" placeholder="Quantity">
+                        </div>
+                        <div class="col-md-12">
+
                             <input type="file" class="form-control" name="image" placeholder="Image">
                         </div>
+
                         <div class="col-12">
                             <label for="description">Description</label>
                             <textarea class="form-control" placeholder="Description" name="description"
