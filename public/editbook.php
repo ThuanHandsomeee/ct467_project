@@ -19,15 +19,15 @@ if ($id) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = $_POST['name'];
         $description = $_POST['description'];
+        $quantity = $_POST['quantity'];
         $price = $_POST['price'];
-        echo $name, $description, $price;
         $image = null;
         if (isset ($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
             $image = $_FILES["image"];
         }
-        $result = $bookModel->editBook($id, $name, $price, $description, $image);
+        $result = $bookModel->editBook($id, $name, $price, $quantity, $description, $image);
         if ($result) {
-            header("Location:/book.php");
+            header("Location:/");
         } else {
             $editFailed = true;
         }
@@ -65,10 +65,10 @@ if ($id) {
                                 ?>" placeholder="Book Price">
                         </div>
                         <div class="col-md-6">
-                            <input type="number" class="form-control" name="quantity" placeholder="Quantity">
+                            <input type="number" class="form-control" name="quantity" value="<?php echo $book['quantity']
+                                ?>" placeholder="Quantity">
                         </div>
-                        <div class="col-md-12">
-
+                        <div class="col-md-6">
                             <input type="file" class="form-control" name="image" placeholder="Image">
                         </div>
 

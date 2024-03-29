@@ -35,7 +35,7 @@ class BookModel
         }
     }
 
-    public function createBook($name, $price, $description, $image, $userId)
+    public function createBook($name, $price, $quantity, $description, $image, $userId)
     {
         try {
             $target_dir = getcwd() . "\\img\\";
@@ -44,8 +44,8 @@ class BookModel
             if (move_uploaded_file($image["tmp_name"], $target_file)) {
                 $db = connectDB();
                 $imageUrl = "img\\" . 'book' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
-                $stmt = $db->prepare("INSERT INTO book (name, price, description, image, user_id) VALUES (:name,:price,:description,:image,:userId)");
-                $stmt->execute(["name" => $name, "price" => $price, "description" => $description, "image" => $imageUrl, "userId" => $userId]);
+                $stmt = $db->prepare("INSERT INTO book (name, price, quantity, description, image, user_id) VALUES (:name,:price,:quantity,:description,:image,:userId)");
+                $stmt->execute(["name" => $name, "price" => $price, "quantity"=>$quantity,"description" => $description, "image" => $imageUrl, "userId" => $userId]);
                 return true;
             } else {
                 return false;
@@ -56,7 +56,7 @@ class BookModel
         }
     }
 
-    public function editBook($id, $name, $price, $description, $image)
+    public function editBook($id, $name, $price,$quantity, $description, $image)
     {
         $db = connectDB();
         echo "Edit Book";
@@ -67,17 +67,18 @@ class BookModel
                 $target_file = $target_dir . 'book' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
                 if (move_uploaded_file($image["tmp_name"], $target_file)) {
                     $imageUrl = "img\\" . 'book' . $uniqueId . '.' . pathinfo($image["name"], PATHINFO_EXTENSION);
-                    $stmt = $db->prepare("UPDATE book SET name = :name, price = :price, description = :description, image = :image WHERE id = :id");
-                    $stmt->execute(["id" => $id, "name" => $name, "price" => $price, "description" => $description, "image" => $imageUrl]);
+                    $stmt = $db->prepare("UPDATE book SET name = :name, price = :price,quantity = :quantity, description = :description, image = :image WHERE id = :id");
+                    $stmt->execute(["id" => $id, "name" => $name, "price" => $price, "quantity"=>$quantity,"description" => $description, "image" => $imageUrl]);
                     return true;
                 }
                 return false;
             } else {
-                $stmt = $db->prepare("UPDATE book SET name = :name, price = :price, description = :description WHERE id = :id");
-                $stmt->execute(["id" => $id, "name" => $name, "price" => $price, "description" => $description]);
+                $stmt = $db->prepare("UPDATE book SET name = :name,  price = :price,quantity = :quantity, description = :description WHERE id = :id");
+                $stmt->execute(["id" => $id, "name" => $name, "price" => $price,"quantity"=>$quantity, "description" => $description]);
                 return true;
             }
         } catch (\PDOException $e) {
+            print($e->getMessage());
             return false;
         }
     }

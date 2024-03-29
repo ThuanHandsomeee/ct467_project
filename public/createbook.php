@@ -8,9 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $user != null) {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $image = $_FILES["image"];
-    
+    $quantity = $_POST['quantity'];
     $book = new BookModel();
-    $result = $book->createBook($name, $price, $description, $image, $user["id"]);
+    $result = $book->createBook($name, $price, $quantity,  $description, $image, $user["id"]);
     if ($result) {
         header("Location: /");
     }
