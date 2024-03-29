@@ -44,7 +44,7 @@ if (isset($_SESSION["user"])) {
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a href="index.php" class="navbar-brand">
-                    <h2 class="text-white">Bookstore</h2>
+                    <h2 class="text-white">Library</h2>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -54,12 +54,12 @@ if (isset($_SESSION["user"])) {
                     <div class="navbar-nav ms-auto">
 
                         <?php
-                    if ($user != NULL) {
-                        echo ' <a href="logout.php" class="btn btn-dark py-2 px-4 me-3">' . $user["username"] . '</a>';
-                    } else {
-                        echo '<a href="login.php" class="btn btn-dark py-2 px-4 me-3">Sign Now</a>';
-                    }
-                    ?>
+                        if ($user != NULL) {
+                            echo ' <a href="logout.php" class="btn btn-dark py-2 px-4 me-3">' . $user["username"] . '</a>';
+                        } else {
+                            echo '<a href="login.php" class="btn btn-dark py-2 px-4 me-3">Sign Now</a>';
+                        }
+                        ?>
                     </div>
 
 

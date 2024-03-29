@@ -10,7 +10,7 @@ $books = $book->getAllBook($page);
 
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3">Bookstore</h1>
+        <h1 class="display-4 text-white mb-3">Library</h1>
 
     </div>
 </div>

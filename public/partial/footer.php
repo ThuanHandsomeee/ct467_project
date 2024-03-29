@@ -5,7 +5,7 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">CNWeb</a>.
+                    &copy; <a class="border-bottom" href="#">CT467-01</a>.
 
                     Designed By Quan Thuan</a>
                 </div>

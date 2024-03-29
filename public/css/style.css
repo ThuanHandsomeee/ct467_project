@@ -148,7 +148,7 @@
     z-index: 1;
 }
 
-.hero-header .breadcrumb-item + .breadcrumb-item::before {
+.hero-header .breadcrumb-item+.breadcrumb-item::before {
     color: var(--bs-light);
 }
 
@@ -424,6 +424,7 @@ edit .newsletter .container {
     right: 12px;
     background: #90bc79;
     padding: 0px 20px;
+    border-radius: 10px;
 }
 
 .button_delete {
@@ -432,6 +433,7 @@ edit .newsletter .container {
     right: 12px;
     background: #90bc79;
     padding: 0px 10px;
+    border-radius: 10px;
 }
 
 .img_book {
