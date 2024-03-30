@@ -4,32 +4,45 @@ use Project\models\BookModel;
 include_once __DIR__ . '/partial/header.php';
 
 require_once __DIR__ . "/../models/BookModel.php";
-require_once __DIR__ . "/../models/Order.php";
+require_once __DIR__ . "/../models/OrderModel.php";
 $page = $_GET['page'] ?? 1;
 $order = new Order();
-$product = new BookModel;
-$products = $product->getAllBook($page);
+$bookModel= new BookModel;
 
-$idproduct = $_GET["id"];
-$product = $product->getById($idproduct);
+$bookId= $_GET["id"];
+$book= $bookModel->getById($bookId);
 
-
+$orderFailed = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $idproduct = $_POST["id"];
+    $bookId= $_POST["id"];
     $namecus = $_POST['namecus'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
-
-    $result = $order->buyBook($idproduct, $namecus, $address, $phone);
+    $quantity = $_POST['quantity'];
+    $result = false;
+    if($user) {
+        $result = $order->borrowBook($bookId, $namecus, $address, $phone, $user["id"]);
+    }
+    else {
+        $result = $order->borrowBook($bookId, $namecus, $address, $phone);
+    }
+    
     if ($result) {
-        header("Location: /index.php");
+        header("Location: /");
+    }
+    else {
+        $orderFailed = true;
     }
 }
 
 ?>
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3">Payment</h1>
+        <h1 class="display-4 text-white mb-3">Borrow Book</h1>
+        <?php if ($orderFailed)
+            echo '<div class="alert alert-danger" role="alert">
+                Đã có lỗi xảy ra!!!
+            </div>' ?>
     </div>
 </div>
 <div class="container-fluid py-5">
@@ -43,13 +56,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php
                             echo '
                                 <div class="col-lg-6 ">
-                                <img class="img-fluid pulse infinite" src="' . $product['image'] . '">
+                                <img class="img-fluid pulse infinite" src="' . $book['image'] . '">
                                 </div>
                                 <div class="col-lg-6 ">
-                                <h1 class="text-primary mb-4">' . $product['name'] . '</h1>
-                                <p>' . $product['description'] . '</p>
+                                <h1 class="text-primary mb-4">' . $book['name'] . '</h1>
+                                <p>' . $book['description'] . '</p>
                                 
-                                <span id="price" class="text-primary fs-4 fw-bold px-1">$' . $product['price'] . '</span>
+                                <span id="price" class="text-primary fs-4 fw-bold px-1">$' . $book['price'] . '</span>
                                 </div>'
                                 ?>
                         </div>
@@ -57,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <form class="col-lg-6 " method="POST" action="">
                     <div class="row g-3">
-                        <input type="hidden" name="idproduct" value="<?php
-                        echo $idproduct
+                        <input type="hidden" name="id" value="<?php
+                        echo $bookId
                             ?>">
                         <div class="col-md-6">
                             <label for="name">Your Name</label>
@@ -74,8 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="Address" class="form-control" name="address" placeholder="Address" required>
                         </div>
                         <div>
-                            <input id="inputquantity" type="number" class="col-md-1 text-center" min="1" value="1"
-                                required>
+                            <input id="inputquantity" type="number" name="quantity" class="col-md-1 text-center" min="1"
+                                value="1" required>
 
                             <h4 id="total"></h4>
                         </div>
